@@ -1,12 +1,17 @@
+* {
+  padding: 0%;
+  margin: 0%;
+}
+
 .site__navbar {
-  color:#fff;
+  color: dodgerblue;
   text-align: center;
-  background-color: dodgerblue;
-  padding: 1% 12%;
+  background-color: white;
+  padding: 1% 5%;
 }
 
 .site__heading {
-  padding: 1% 5%;
+  padding: 1% 0%;
 }
 
 .site__subtitle {
