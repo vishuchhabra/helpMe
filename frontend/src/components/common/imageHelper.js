@@ -9,9 +9,10 @@ const ImageHelper = ({product}) =>{
     return (
         <div >
             {imageurl &&
-            <div className="post-card-image" style={{
-                backgroundImage: `url(${imageurl})` ,
-            }}></div>}
+            <div className="post-card-image" 
+            >
+            <img src={imageurl} alt="" style={{"width":"100%",height:"100%"}}/>    
+            </div>}
        </div>
     )
 }
