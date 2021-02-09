@@ -5,6 +5,7 @@ import Layout from './Layout'
 import Header from './Header'
 import Bottom from './Bottom'
 
+
 // Import the images
 import twitter from '../../images/twitter.svg'
 import facebook from '../../images/facebook.svg'
@@ -16,6 +17,8 @@ import image from '../../images/images.png'
 import { Link } from 'react-router-dom'
 import {API} from '../../backend'
 import ImageHelper2 from './imageHelper2'
+import Loader from 'react-loader-spinner'
+
 
 export default function Page({match}) {
 
@@ -35,6 +38,7 @@ export default function Page({match}) {
     const preload = (productId) => {
         getProduct().then(data => {
             data.createdAt = data.createdAt.slice(0,10)
+            data.categoryName = data.category.name
             setProduct(data)
             
           }
@@ -50,7 +54,6 @@ export default function Page({match}) {
     return (
         
         <div className={"viewport1"}>
-                       
         <header  className={"site-head"}  >
                     <div className={"container"}>
                         <div className={"site-mast"}>
@@ -97,7 +100,7 @@ export default function Page({match}) {
                         <br/>
                         <section  className="content-body load-external-scripts" > <b> Address:</b>  {product.address} </section>
                         <br/>
-                        <section  className="content-body load-external-scripts" ><b> Category: </b> Education </section>
+                        <section  className="content-body load-external-scripts" ><b> Category: </b> {product.categoryName} </section>
                         <br/>
                         <section  className="content-body load-external-scripts" ><b>Amount Donated Till Now: </b>  ₹{product.amountDonated}/- </section>
                         <br/>
