@@ -25,6 +25,7 @@ export default function Page({match}) {
     // make the dyanamic products
     const [product, setProduct] = useState({});
 
+    const [loading,setLoading] = useState(false)
 
     // hit the api
     const getProduct = () =>{
@@ -39,6 +40,7 @@ export default function Page({match}) {
         getProduct().then(data => {
             data.createdAt = data.createdAt.slice(0,10)
             data.categoryName = data.category.name
+            setLoading(true)
             setProduct(data)
             
           }
@@ -53,70 +55,78 @@ export default function Page({match}) {
 
     return (
         
-        <div className={"viewport1"}>
-        <header  className={"site-head"}  >
-                    <div className={"container"}>
-                        <div className={"site-mast"}>
-                            <div className={"site-mast-left"}>
-                             <Link to="/">
-                                <img className={"site-logo"} src={image} />
-                                </Link>
+      <div>
+          { !loading ?
+          <div style={{textAlign:"center",marginTop:"300px"}} >
+              <Loader color="black"/>
+          </div> :
+            <div className={"viewport1"}>
+            <header  className={"site-head"}  >
+                        <div className={"container"}>
+                            <div className={"site-mast"}>
+                                <div className={"site-mast-left"}>
+                                 <Link to="/">
+                                    <img className={"site-logo"} src={image} />
+                                    </Link>
+                                </div>
+                                <div className={"site-mast-right"}>
+                                    {  <a href={"https://twitter.com/vishuchhabra10"} className={"site-nav-item"} target="_blank" rel="noopener noreferrer"><img src={twitter} className={"site-nav-icon"}  alt="Twitter" /></a>}
+                                    { <a href={"https://www.facebook.com/vishu.chhabra.543/"} className={"site-nav-item"} target="_blank" rel="noopener noreferrer"><img className={"site-nav-icon"} src={facebook} alt="Facebook" /></a>}
+                                    <a className={"site-nav-item"} href={"https://vishuchhabra.github.io/"} target="_blank" rel="noopener noreferrer"><img className={"site-nav-icon"} src={rss}alt="RSS Feed" /></a>
+                                </div>
                             </div>
-                            <div className={"site-mast-right"}>
-                                {  <a href={"https://twitter.com/vishuchhabra10"} className={"site-nav-item"} target="_blank" rel="noopener noreferrer"><img src={twitter} className={"site-nav-icon"}  alt="Twitter" /></a>}
-                                { <a href={"https://www.facebook.com/vishu.chhabra.543/"} className={"site-nav-item"} target="_blank" rel="noopener noreferrer"><img className={"site-nav-icon"} src={facebook} alt="Facebook" /></a>}
-                                <a className={"site-nav-item"} href={"https://vishuchhabra.github.io/"} target="_blank" rel="noopener noreferrer"><img className={"site-nav-icon"} src={rss}alt="RSS Feed" /></a>
-                            </div>
+                       
+             
                         </div>
-                   
-         
+            </header>
+    
+    
+    
+            {/* Lower Part  */}
+                    <div className="container" style={{"marginTop":"0px"}}>
+                        <article className="content">
+    
+                            <section
+                                className="content-body load-external-scripts"
+                                style={{"text-align":"center" ,paddingBottom:"0px" ,paddingTop:"40px",fontSize:"30px"}}
+                                
+                            > <b> Hola peeps, This is {product.name}</b></section>
+                            
+                                <br/><br/>
+                                <div style={{"textAlign":"center"}}>
+                               <ImageHelper2 id={match.params.id}/>
+                               
+                                </div>
+                            
+                            
+                            <section
+                                className="content-body load-external-scripts"
+                                style={{"text-align":"justify" ,paddingBottom:"0px" ,paddingTop:"40px"}}
+                                
+                            ><b>Description:</b>  {product.description} </section>
+                            <br/>
+                            <section  className="content-body load-external-scripts" > <b> Address:</b>  {product.address} </section>
+                            <br/>
+                            <section  className="content-body load-external-scripts" ><b> Category: </b> {product.categoryName} </section>
+                            <br/>
+                            <section  className="content-body load-external-scripts" ><b>Amount Donated Till Now: </b>  ₹{product.amountDonated}/- </section>
+                            <br/>
+                            <section  className="content-body load-external-scripts" ><b> Post Created At:</b> {product.createdAt} </section>
+                            <br/>
+                            <section  className="content-body load-external-scripts" ><b> Donate Here:</b> </section>
+                            <br/>
+                            <input type="number" name="" id="" placeholder="Enter Amount"/>
+                            <br/>
+                            <br/>
+                            <button style={{"color":"white",backgroundColor:"black" ,display: "inline-block", padding: "10px 20px"}}>Donate</button>
+                            <section  className="content-body load-external-scripts" style={{"textAlign":"right"}}>&mdash;helpMe</section>
+                        </article>
                     </div>
-        </header>
-
-
-
-        {/* Lower Part  */}
-                <div className="container" style={{"marginTop":"0px"}}>
-                    <article className="content">
-
-                        <section
-                            className="content-body load-external-scripts"
-                            style={{"text-align":"center" ,paddingBottom:"0px" ,paddingTop:"40px",fontSize:"30px"}}
-                            
-                        > <b> Hola peeps, This is {product.name}</b></section>
-                        
-                            <br/><br/>
-                            <div style={{"textAlign":"center"}}>
-                           <ImageHelper2 id={match.params.id}/>
-                           
-                            </div>
-                        
-                        
-                        <section
-                            className="content-body load-external-scripts"
-                            style={{"text-align":"justify" ,paddingBottom:"0px" ,paddingTop:"40px"}}
-                            
-                        ><b>Description:</b>  {product.description} </section>
-                        <br/>
-                        <section  className="content-body load-external-scripts" > <b> Address:</b>  {product.address} </section>
-                        <br/>
-                        <section  className="content-body load-external-scripts" ><b> Category: </b> {product.categoryName} </section>
-                        <br/>
-                        <section  className="content-body load-external-scripts" ><b>Amount Donated Till Now: </b>  ₹{product.amountDonated}/- </section>
-                        <br/>
-                        <section  className="content-body load-external-scripts" ><b> Post Created At:</b> {product.createdAt} </section>
-                        <br/>
-                        <section  className="content-body load-external-scripts" ><b> Donate Here:</b> </section>
-                        <br/>
-                        <input type="number" name="" id="" placeholder="Enter Amount"/>
-                        <br/>
-                        <br/>
-                        <button style={{"color":"white",backgroundColor:"black" ,display: "inline-block", padding: "10px 20px"}}>Donate</button>
-                        <section  className="content-body load-external-scripts" style={{"textAlign":"right"}}>&mdash;helpMe</section>
-                    </article>
-                </div>
-
-          <Bottom/>
-  </div>
+    
+              <Bottom/>
+      </div>
+          
+          }
+      </div>
     )
 }
