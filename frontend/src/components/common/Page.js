@@ -115,10 +115,12 @@ export default function Page({match}) {
                             <br/>
                             <section  className="content-body load-external-scripts" ><b> Donate Here:</b> </section>
                             <br/>
-                            <input type="number" name="" id="" placeholder="Enter Amount"/>
+                            <section  className="content-body load-external-scripts" ><b> Donation ID (Copy IT):</b> {product._id} </section>
                             <br/>
                             <br/>
+                            <a href="https://www.payumoney.com/webfronts/#/index/helpMe">
                             <button style={{"color":"white",backgroundColor:"black" ,display: "inline-block", padding: "10px 20px"}}>Donate</button>
+                            </a>
                             <section  className="content-body load-external-scripts" style={{"textAlign":"right"}}>&mdash;helpMe</section>
                         </article>
                     </div>
