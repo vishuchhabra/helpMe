@@ -26,7 +26,7 @@ export default function Bottom() {
                     <footer className="site-foot">
                         <div className="site-foot-nav container">
                             <div className="site-foot-nav-left">
-                                <Link to="/">helpMe</Link> © 2021 &mdash; Published By Vishu and Anshu
+                                <Link to="/">helpMe</Link> © 2021 &mdash; Made By Vishu Chhabra
                             </div>
                             <div className="site-foot-nav-right">
                                 <Navigation navClass="site-foot-nav-item" />
